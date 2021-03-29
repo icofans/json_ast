@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import "package:path/path.dart" show dirname, join, normalize;
 
+import '../../../lib/json_ast.dart';
 import '../../types_helper.dart';
 import '../../test_helper.dart';
 import '../../../lib/error.dart';
@@ -9,7 +10,7 @@ import '../../../lib/location.dart';
 import '../../../lib/parse.dart';
 
 final location = Location.create;
-final object = createObject;
+final ObjectNode Function(List<PropertyNode>, [Location]) object = createObject;
 
 final ast = TestAST(object([], location(1, 1, 0, 1, 3, 2)), Settings());
 

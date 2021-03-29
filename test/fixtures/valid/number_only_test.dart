@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import "package:path/path.dart" show dirname, join, normalize;
 
+import '../../../lib/json_ast.dart';
 import '../../types_helper.dart';
 import '../../test_helper.dart';
 import '../../../lib/error.dart';
@@ -10,7 +11,7 @@ import '../../../lib/parse.dart';
 
 final location = Location.create;
 
-final literal = createLiteral;
+final LiteralNode Function(dynamic, String, [Location]) literal = createLiteral;
 
 final ast = new TestAST(
     literal(12345, '12345', location(1, 1, 0, 1, 6, 5)), Settings());

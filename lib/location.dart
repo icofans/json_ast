@@ -1,14 +1,14 @@
 class Loc {
-  final int line;
-  final int column;
+  final int? line;
+  final int? column;
 
   Loc({this.line, this.column});
 }
 
 class Segment extends Loc {
-  final int offset;
+  final int? offset;
 
-  Segment(int line, int column, this.offset)
+  Segment(int? line, int? column, this.offset)
       : super(line: line, column: column);
 
   bool operator ==(dynamic other) =>
@@ -21,7 +21,7 @@ class Segment extends Loc {
 class Location {
   final Segment start;
   final Segment end;
-  final String source;
+  final String? source;
 
   Location(this.start, this.end, [this.source]);
 
@@ -31,9 +31,9 @@ class Location {
       end == other.end &&
       source == other.source;
 
-  static Location create(int startLine, int startColumn, int startOffset,
-      int endLine, int endColumn, int endOffset,
-      [String source]) {
+  static Location create(int? startLine, int? startColumn, int? startOffset,
+      int? endLine, int? endColumn, int? endOffset,
+      [String? source]) {
     final startSegment = new Segment(startLine, startColumn, startOffset);
     final endSegment = new Segment(endLine, endColumn, endOffset);
     return new Location(startSegment, endSegment, source);

@@ -22,22 +22,23 @@ _assertSameNodeType(Node node, Node other) {
 assertNode(Node node, Node other, {assertLocation: true, assertIndex: true}) {
   _assertSameNodeType(node, other);
   if (node is ValueNode) {
-    _assertValueNode(node, other, assertLocation: assertLocation);
+    _assertValueNode(node, other as ValueNode, assertLocation: assertLocation);
   }
   if (node is ObjectNode) {
-    _assertObjectNode(node, other,
+    _assertObjectNode(node, other as ObjectNode,
         assertLocation: assertLocation, assertIndex: assertIndex);
   }
   if (node is ArrayNode) {
-    _assertArrayNode(node, other,
+    _assertArrayNode(node, other as ArrayNode,
         assertLocation: assertLocation, assertIndex: assertIndex);
   }
   if (node is PropertyNode) {
-    _assertPropertyNode(node, other,
+    _assertPropertyNode(node, other as PropertyNode,
         assertLocation: assertLocation, assertIndex: assertIndex);
   }
   if (node is LiteralNode) {
-    _assertLiteralNode(node, other, assertLocation: assertLocation);
+    _assertLiteralNode(node, other as LiteralNode,
+        assertLocation: assertLocation);
   }
 }
 
@@ -97,7 +98,7 @@ _assertValueNode(ValueNode node, ValueNode other, {assertLocation: true}) {
 
 _assertPropertyNode(PropertyNode node, PropertyNode other,
     {assertLocation: true, assertIndex: true}) {
-  _assertValueNode(node.key, other.key, assertLocation: assertLocation);
+  _assertValueNode(node.key!, other.key!, assertLocation: assertLocation);
   _assertMaybeNode(node.value, other.value,
       assertLocation: assertLocation, assertIndex: assertIndex);
   if (assertIndex) {

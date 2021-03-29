@@ -2,8 +2,8 @@ import 'package:test/test.dart';
 import '../lib/json_ast.dart';
 
 void _assertException(void Function() fun, JSONASTException expected) {
-  JSONASTException exceptionThrown;
-  final exceptionAssertion = predicate((e) {
+  late JSONASTException exceptionThrown;
+  final exceptionAssertion = predicate((dynamic e) {
     if (e is JSONASTException) {
       exceptionThrown = e;
       return true;
